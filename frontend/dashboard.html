@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Employee Dashboard</h1>
+      <button onclick="logout()">Logout</button>
+    </header>
+
+    <section>
+      <h2>Create Task (Manager Only)</h2>
+      <form id="taskForm">
+        <input name="title" placeholder="Task Title" required />
+        <input name="description" placeholder="Description" required />
+        <input name="assignedTo" placeholder="Assign to (User ID)" required />
+        <input type="date" name="dueDate" required />
+        <button type="submit">Create Task</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Your Tasks</h2>
+      <ul id="taskList"></ul>
+    </section>
+
+    <section>
+      <h2>Log Your Work</h2>
+      <form id="logForm">
+        <input type="datetime-local" name="startTime" required />
+        <input type="datetime-local" name="endTime" required />
+        <input placeholder="Tasks Worked On (comma separated)" name="tasksWorkedOn" required />
+        <button type="submit">Submit Log</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Your Work Logs</h2>
+      <ul id="logList"></ul>
+    </section>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
