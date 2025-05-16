@@ -1,4 +1,6 @@
 const WorkLog = require('../models/WorkLog');
+const Task = require('../models/Task');
+const User = require('../models/User')
 
 exports.createLog = async (req, res) => {
   const { startTime, endTime, tasksWorkedOn } = req.body;
@@ -18,7 +20,11 @@ exports.createLog = async (req, res) => {
 
 exports.getLogs = async (req, res) => {
   try {
-    const logs = await WorkLog.find({ employeeId: req.user.userId });
+    const userEmail = req.query.email;
+    const data = await User.find({email : userEmail})
+
+
+    const logs = await WorkLog.find({employeeId : data[0]._id });
     res.json(logs);
   } catch (err) {
     res.status(500).json({ message: err.message });
